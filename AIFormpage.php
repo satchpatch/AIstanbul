@@ -26,24 +26,45 @@ $questions = array("Where do you live?",
 "Favorite pazar?",
 "Where do you buy your clothes from?",
 "What are you doing this Saturday night?");
+//select one question at random
 $qselected = $questions[rand(0,9)];
 
-//how many questions in the database?
+//how many Users are in the database? 
+//Finds the highest ID and sets that to the new ID++
+$currentID = 0;
+$s = "SELECT ID FROM AIQuestions ORDER BY ID ASC";
+$t = mysqli_query($db,$s) or die (mysqli_error($db));
+while ( $r = mysqli_fetch_array($t,MYSQLI_ASSOC) ) {
+		$currentID 				= $r[ "ID" ];
+}
+$currentID++;
+echo "your ID is $currentID <br><br>";
+$_SESSION["currentID"]= $currentID;
+
+
+//change to a query that finds the highest ID and sets that to the new ID++
 $s = "SELECT * FROM AIQuestions";
 $t = mysqli_query($db,$s) or die (mysqli_error($db));
 $numStoredQuestions = mysqli_num_rows($t);
 
 
 //store values in session
+//ToDo: make two for loops of questions and answers. Pack in handler. If ans is null, don't store in database. Add time field to SQL.
 $_SESSION["qselected"] = $qselected;
 $_SESSION["numStoredQuestions"] = $numStoredQuestions;
- print $qselected;
+$_SESSION["questions"] = $questions;
+
+//print the HTML form
+echo '<form    action="AIFormpageHandler.php"  >';
+
+//for loop to iterate through all the questions
+$qnum = 0;
+foreach($questions as $q){
+echo "$q <br>";
+echo "<input type=text  name=\"$qnum\"><br><br>";
+$qnum++;
+}
+
+echo "<input type=submit>";
+echo "</form>";
 ?>
-
-<!DOCTYPE html>
-<form    action="AIFormpageHandler.php"  >
-
-<input type=text  name="answer" >Enter Answer<br>
-<input type=submit>
-
-</form>
