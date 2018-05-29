@@ -49,7 +49,6 @@ $numStoredQuestions = mysqli_num_rows($t);
 
 
 //store values in session
-//ToDo: make two for loops of questions and answers. Pack in handler. If ans is null, don't store in database. Add time field to SQL.
 $_SESSION["qselected"] = $qselected;
 $_SESSION["numStoredQuestions"] = $numStoredQuestions;
 $_SESSION["questions"] = $questions;
