@@ -4,7 +4,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 ini_set('display_errors',1);
 
 //connect to DB
-include (  "account.php"     ) ;
+include (  "accountAI.php"     ) ;
 $db = mysqli_connect($hostname,$username, $password ,$project);
 if (mysqli_connect_errno())
   {

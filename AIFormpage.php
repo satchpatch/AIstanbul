@@ -5,7 +5,7 @@ ini_set('display_errors',1);
 session_start();
 
 //connect to the database
-include (  "account.php"     ) ;
+include (  "accountAI.php"     ) ;
 $db = mysqli_connect($hostname,$username, $password ,$project);
 if (mysqli_connect_errno())
   {
