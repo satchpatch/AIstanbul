@@ -4,6 +4,7 @@ Changes must be submitted to the sq42 NJIT afs account through MobaXterm before 
 Scripts
 -AIUnityHandler 
 	-Used to submit questions and answers to the database
+	-Both questions and answers are required for a successful submission
 	-A new ID is generated per call, meaning, this script should only be run once the user is finished answering questions.
 -ProcessingHandler
 	-Used to retrieve data from the database
